@@ -32,5 +32,8 @@ User.login = function(o, cb){
   });
 };
 
+User.update = function(id, cb){
+};
+
 module.exports = User;
 
