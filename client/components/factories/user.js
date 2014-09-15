@@ -19,7 +19,11 @@
     function update(user){
       return $http.post('/profile', user);
     }
-    return {register:register, login:login, logout:logout, update:update};
+
+    function show(){
+      return $http.get('/profile');
+    }
+    return {register:register, login:login, logout:logout, update:update, show:show};
   }]);
 })();
 
