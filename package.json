@@ -1,17 +1,21 @@
 {
-  "name": "mean-template",
+  "name": "i-fit",
   "version": "0.0.0",
-  "description": "The MEAN Template",
+  "description": "health tracking app using angular",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nss-cohort-2014-06-07/mean-template"
+    "url": "https://github.com/bchiatt/i-fit"
   },
-  "author": "Chyld Medford <chyld.medford@gmail.com>",
+  "author": "Brian Hiatt <brian.hiatt41@gmail.com>",
+  "contributors": [
+    "Matt Keef <mkeef1@gmail.com>",
+    "JoAnn Brooks <joannbrooks036@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nss-cohort-2014-06-07/mean-template/issues"
+    "url": "https://github.com/bchiatt/i-fit/issues"
   },
-  "homepage": "https://github.com/nss-cohort-2014-06-07/mean-template",
+  "homepage": "https://github.com/bchiatt/i-fit",
   "dependencies": {
     "async": "^0.9.0",
     "bcrypt": "^0.8.0",
