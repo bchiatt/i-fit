@@ -63,5 +63,8 @@ User.prototype.update = function(o, cb){
   User.collection.save(this, cb);
 };
 
+User.prototype.updateGoals = function(o, cb){
+};
+
 module.exports = User;
 
