@@ -68,13 +68,13 @@ exports.dashboard = function(req, res){
 };
 
 exports.eat = function(req, res){
-  Food.create(req.body, req.user._id, function(err, food){
+  Food.create(req.body, req.user, function(err, food){
     res.send({food:food});
   });
 };
 
 exports.exercise = function(req, res){
-  Exercise.create(req.body, req.user._id, function(err, exercise){
+  Exercise.create(req.body, req.user, function(err, exercise){
     res.send({exercise:exercise});
   });
 };

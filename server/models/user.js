@@ -38,25 +38,25 @@ User.login = function(o, cb){
 };
 
 User.prototype.update = function(o, cb){
-  var properties = Object.keys(o),
-      self       = this;
+  var properties    = Object.keys(o),
+      self          = this;
 
   properties.forEach(function(property){
     switch(property){
       case 'height':
-        self[property] = o[property] * 1;
+        if(height){self[property] = o[property] * 1};
         break;
       case 'weight':
-        self[property] = o[property] * 1;
+        self.weights.push({when:new Date(), wt:o[property] * 1});
         break;
       case 'age':
-        self[property] = o[property] * 1;
+        if(age){self[property] = o[property] * 1};
         break;
       case 'goals':
-        self[property] = o[property];
+        if(goals){self[property] = o[property]};
         break;
       default:
-        self[property] = o[property];
+        if(o[property]){self[property] = o[property]};
     }
   });
 
