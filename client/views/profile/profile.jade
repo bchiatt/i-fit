@@ -7,23 +7,26 @@
         input.form-control#name(ng-minlength='1', required, ng-model='user.name', type='text', name='name', autofocus, value='client.name')
       .form-group
         label(for='age') Age
-        input.form-control#age(required, ng-model='user.age', type='number', name='age')
+        input.form-control#age(required, ng-model='user.age', type='number', name='age', value='client.age')
       .form-group
         label(for='height') Height
-        input.form-control#height(required, ng-model='user.height', type='number', name='height')
+        input.form-control#height(required, ng-model='user.height', type='number', name='height', value='client.height')
       .form-group
         label(for='weight') Weight
-        input.form-control#weight(required, ng-model='user.weight', type='number', name='weight')
+        input.form-control#weight(required, ng-model='user.weight', type='number', name='weight', value='client.weight')
       .form-group
         label(for='gender') Gender
-        select.form-control#gender(required, ng-model='user.gender', type='dropdown', name='gender')
+        select.form-control#gender(required, ng-model='user.gender', type='dropdown', name='gender', value='client.gender')
           option Male
           option Female
       button.btn.btn-primary(type='submit', ng-show='profileForm.$valid', ng-click='update()') Update
-  .col-xs-8
-    h4 Weight Graph
-    h4 BMI Graph
-  .col-xs-2
+  .col-xs-6
+    h4 Weight Graph  &  Bar Graph
+    .panel.panel-default
+      .panel-heading
+        .panel-title Weight Graph
+          .panel-body Graph
+  .col-xs-3
     h4 Goals
     form(role='form', novalidate, name='goalForm')
       .form-group
