@@ -27,6 +27,7 @@
     function show(){
       return $http.get('/profile');
     }
+
     return {register:register, login:login, logout:logout, update:update, updateGoals:updateGoals, show:show};
   }]);
 })();
