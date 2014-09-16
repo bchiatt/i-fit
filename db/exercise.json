@@ -1,0 +1,11 @@
+{
+  "_id":{"$oid":"e00000000000000000000001"},
+  "desc":"running",
+  "when":{"$date":4772952000008},
+  "time":45,
+  "intensity":null,
+  "distance": 1.0,
+  "notes":"ran uphill in the rain, with Joe",
+  "calsBurned":150,
+  "userId":{"$oid":"000000000000000000000001"}
+}
