@@ -1,53 +1,74 @@
 .row
-  .col-xs-3
-    h2 Info
-    h4 Name: {{client.name}}
-    h4 Age: {{client.age}}
-    h4 Height: {{client.height}} inches
-    h4 Weight: {{client.weights[client.weights.length - 1].wt}} lbs.
-    h4 Last Weigh In: {{client.weights[client.weights.length -1].when | date:'MM/dd/yyyy'}}
-    h4 Gender: {{client.gender}}
+  .col-xs-4
+    .formBackground
+      h2 Info
+      h4 Name: {{client.name}}
+      h4 Age: {{client.age}}
+      h4 Height: {{client.height}} inches
+      h4 Weight: {{weight}} lbs.
+      h4 BMI: {{bmi}}
+      h4 Last Weigh In: {{client.weights[client.weights.length - 1].when | date:"MM/dd/yyyy"}}
+      h4 Gender: {{client.gender}}
 
-    button.btn-primary(ng-click='toggleForm()') Edit Info
-    form(role='form', novalidate, name='profileForm', ng-show='hideForm')
-      .form-group
-        label(for='name') Name
-        input.form-control#name(required, ng-model='user.name', type='text', name='name', autofocus)
-      .form-group
-        label(for='age') Age
-        input.form-control#age(required, ng-model='user.age', type='number', name='age')
-      .form-group
-        label(for='height') Height
-        input.form-control#height(required, ng-model='user.height', type='number', name='height')
-      .form-group
-        label(for='weight') Weight
-        input.form-control#weight(required, ng-model='user.weight', type='number', name='weight')
-      .form-group
-        label(for='gender') Gender
-        select.form-control#gender(required, ng-model='user.gender', type='dropdown', name='gender')
-          option Male
-          option Female
-      button.btn.btn-primary(type='submit', ng-show='profileForm.$valid', ng-click='update()') Update
-  .col-xs-6
-    h4 Weight Graph  &  Bar Graph
+      button.btn.btn-primary(ng-click='toggleUserForm()') Edit Info
+      form(role='form', novalidate, name='profileForm', ng-show='hideUserForm')
+        .form-group
+          label(for='name') Name
+          input.form-control#name(required, ng-model='user.name', type='text', name='name', autofocus)
+        .form-group
+          label(for='age') Age
+          input.form-control#age(required, ng-model='user.age', type='number', name='age')
+        .form-group
+          label(for='height') Height
+          input.form-control#height(required, ng-model='user.height', type='number', name='height')
+        .form-group
+          label(for='weight') Weight
+          input.form-control#weight(required, ng-model='user.weight', type='number', name='weight')
+        .form-group
+          label(for='gender') Gender
+          select.form-control#gender(required, ng-model='user.gender', type='dropdown', name='gender')
+            option Male
+            option Female
+        button.btn.btn-primary(type='submit', ng-click='update(); toggleUserForm()') Update
+  .col-xs-4
     .panel
-      .panel-heading
-        .panel-title Weight Graph
-          .panel-body Graph
-          pre {{client}}
-  .col-xs-3
-    h4 Goals
-    form(role='form', novalidate, name='goalForm')
-      .form-group
-        label(for='name') Name
-        input.form-control#name(required, ng-model='goal.name', type='text', name='name', autofocus)
-      .form-group
-        label(for='weight') Weight
-        input.form-control#weight(required, ng-model='goal.weight', type='number', name='weight')
-      .form-group
-        label(for='bmi') BMI
-        input.form-control#bmi(required, ng-model='goal.bmi', type='number', name='bmi')
-      .form-group
-        label(for='weight')
-        input.form-control#height(required, ng-model='user.height', type='number', name='height')
-      button.btn.btn-primary(type='submit', ng-show='profileForm.$valid', ng-click='update()') Update
+      h3 Weight Goal
+      #weightGoal
+        #weightGoalBar(ng-style='{height:weight + "px"}')
+        .actualLabel GOAL
+        #weightActualBar(ng-style='{height:client.goals.weight + "px"}')
+        .goalLabel ACTUAL
+      br
+      h3 BMI Goal
+      #bmiGoal
+        #bmiGoalBar(ng-style='{height:bmi * 8 + "px"}')
+        .actualLabel GOAL
+        #bmiActualBar(ng-style='{height:client.goals.bmi * 8 + "px"}')
+        .goalLabel ACTUAL
+
+
+
+
+
+  .col-xs-4
+    .formBackground
+      h2 Goals
+      h4 Exercise Mins/Day: {{client.goals.exerMinsPerDay}}
+      h4 Cals Consumed/Day: {{client.goals.calsPerDay}}
+      h4 Weight: {{client.goals.weight}} lbs.
+      h4 BMI: {{client.goals.bmi}}
+      button.btn.btn-primary(ng-click='toggleGoalForm()') Edit Info
+      form(role='form', novalidate, name='goalForm', ng-show='hideGoalForm')
+        .form-group
+          label(for='minutes') Exercise (mins/day)
+          input.form-control#minutes(required, ng-model='goals.exerMinsPerDay', type='text', name='minutes', autofocus)
+        .form-group
+          label(for='calories') Calories (consumed/day)
+          input.form-control#calories(required, ng-model='goals.calsPerDay', type='number', name='calories')
+        .form-group
+          label(for='goalWeight') Weight
+          input.form-control#goalWeight(required, ng-model='goals.weight', type='number', name='goalWeight')
+        .form-group
+          label(for='goalBmi') BMI
+          input.form-control#goalBmi(required, ng-model='goals.bmi', type='number', name='goalBmi')
+        button.btn.btn-primary(type='submit', ng-click='updateGoals(); toggleGoalForm()') Update

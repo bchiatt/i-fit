@@ -52,8 +52,9 @@ exports.update = function(req, res){
 };
 
 exports.goals = function(req, res){
-  User.updateGoals(req.body, function(err, goal){
-    res.send({goal:goal});
+  req.user.updateGoals(req.body, function(err, client, c){
+    console.log(err, client, c);
+    res.send({goals:client.goals});
   });
 };
 
@@ -68,7 +69,7 @@ exports.dashboard = function(req, res){
 };
 
 exports.eat = function(req, res){
-  Food.create(req.body, req.user._id, function(err, food){
+  Food.create(req.body, req.user, function(err, food){
     res.send({food:food});
   });
 };
@@ -82,7 +83,7 @@ exports.foodLog = function(req, res){
 };
 
 exports.exercise = function(req, res){
-  Exercise.create(req.body, req.user._id, function(err, exercise){
+  Exercise.create(req.body, req.user, function(err, exercise){
     res.send({exercise:exercise});
   });
 };

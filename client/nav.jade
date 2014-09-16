@@ -10,12 +10,12 @@
 
     .collapse.navbar-collapse#bs-navbar-collapse
       ul.nav.navbar-nav.navbar-right(ng-hide='email')
-        li: a(href='/#/') Home
+        li: a(href='/#/', class='fa fa-home') &nbsp Home
         li: a(href='/#/register') Register
         li: a(href='/#/login') Login
       ul.nav.navbar-nav.navbar-right(ng-show='email')
-        li: a(href='/#/') Home
-        li: a(href='/#/logout') {{email}}
-        li: a(href='/#/profile') Profile
-        li: a(href='/#/dashboard') Dashboard
+        li: a(href='/#/profile', class='glyphicon glyphicon-user') &nbsp Profile
+        li: a(href='/#/dashboard', class='fa fa-bar-chart') &nbsp Dashboard
+        li: a(href='/#/logout', class='fa fa-times') &nbsp Logout
+        li: a(href='') {{email}}
 
