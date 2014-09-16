@@ -20,8 +20,8 @@ Food.create = function(o, user, cb){
   Food.collection.save(f, cb);
 };
 
-Food.all = function(user, cb){
-  Food.collection.find({userId:user._id}).toArray(cb);
+Food.all = function(userId, cb){
+  Food.collection.find({userId:userId}).toArray(cb);
 };
 
 module.exports = Food;

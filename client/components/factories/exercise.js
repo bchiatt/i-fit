@@ -2,14 +2,14 @@
   'use strict';
 
   angular.module('i-fit')
-  .factory('Exercise', ['$http', '$food', '$user', function($http, $food, $user){
+  .factory('Exercise', ['$http', function($http){
 
     function create(exercise){
-      return $http.post('/exercise', exercise);
+      return $http.post('/dashboard/exercise', exercise);
     }
 
     function all(){
-      return $http.get('/exercise');
+      return $http.get('/dashboard/exercise');
     }
 
     return {create:create, all:all};

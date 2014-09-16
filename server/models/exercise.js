@@ -24,8 +24,8 @@ Exercise.create = function(o, user, cb){
   Exercise.collection.save(e, cb);
 };
 
-Exercise.all = function(user, cb){
-  Exercise.collection.find({userId:user._id}).toArray(cb);
+Exercise.all = function(userId, cb){
+  Exercise.collection.find({userId:userId}).toArray(cb);
 };
 
 module.exports = Exercise;

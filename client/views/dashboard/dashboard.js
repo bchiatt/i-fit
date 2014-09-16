@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('i-fit')
-  .controller('DashboardCtrl', ['$scope', function($scope){
+  .controller('DashboardCtrl', ['$scope', 'Food', 'Exercise', function($scope, Food, Exercise){
     $scope.foodType = ['Fruit', 'Vegetable', 'Carbohydrate', 'Protein', 'Dairy', 'Other'];
     $scope.excerTypes = ['weights', 'sports', 'yoga', 'running', 'swimming', 'biking'];
     $scope.intensities = ['LOW', 'MEDIUM', 'HIGH'];
@@ -10,6 +10,14 @@
     $scope.food = {};
     $scope.exercises = [];
     $scope.exercise = {};
+
+    Food.all().then(function(response){
+      $scope.foods = response.data.foods;
+    });
+
+    Exercise.all().then(function(response){
+      $scope.exercises = response.data.exercises;
+    });
 
     $scope.toggleFood = function(){
       $scope.hideFood = !!!$scope.hideFood;
