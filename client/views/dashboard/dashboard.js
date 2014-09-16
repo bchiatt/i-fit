@@ -5,7 +5,7 @@
   .controller('DashboardCtrl', ['$scope', 'Food', 'Exercise', function($scope, Food, Exercise){
     $scope.foodType = ['Fruit', 'Vegetable', 'Carbohydrate', 'Protein', 'Dairy', 'Other'];
     $scope.excerTypes = ['weights', 'sports', 'yoga', 'running', 'swimming', 'biking'];
-    $scope.intensities = ['LOW', 'MEDIUM', 'HIGH'];
+    $scope.intensities = ['low', 'medium', 'high'];
     $scope.foods = [];
     $scope.food = {};
     $scope.exercises = [];
