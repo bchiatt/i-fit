@@ -1,31 +1,40 @@
 .row
   .col-xs-3
-    h4 Info
-    form(role='form', novalidate, name='profileForm')
+    h2 Info
+    h4 Name: {{client.name}}
+    h4 Age: {{client.age}}
+    h4 Height: {{client.height}} inches
+    h4 Weight: {{client.weights[client.weights.length - 1].wt}} lbs.
+    h4 Last Weigh In: {{client.weights[client.weights.length -1].when | date:'MM/dd/yyyy'}}
+    h4 Gender: {{client.gender}}
+
+    button.btn-primary(ng-click='toggleForm()') Edit Info
+    form(role='form', novalidate, name='profileForm', ng-show='hideForm')
       .form-group
         label(for='name') Name
-        input.form-control#name(ng-minlength='1', required, ng-model='user.name', type='text', name='name', autofocus, value='client.name')
+        input.form-control#name(required, ng-model='user.name', type='text', name='name', autofocus)
       .form-group
         label(for='age') Age
-        input.form-control#age(required, ng-model='user.age', type='number', name='age', value='client.age')
+        input.form-control#age(required, ng-model='user.age', type='number', name='age')
       .form-group
         label(for='height') Height
-        input.form-control#height(required, ng-model='user.height', type='number', name='height', value='client.height')
+        input.form-control#height(required, ng-model='user.height', type='number', name='height')
       .form-group
         label(for='weight') Weight
-        input.form-control#weight(required, ng-model='user.weight', type='number', name='weight', value='client.weight')
+        input.form-control#weight(required, ng-model='user.weight', type='number', name='weight')
       .form-group
         label(for='gender') Gender
-        select.form-control#gender(required, ng-model='user.gender', type='dropdown', name='gender', value='client.gender')
+        select.form-control#gender(required, ng-model='user.gender', type='dropdown', name='gender')
           option Male
           option Female
       button.btn.btn-primary(type='submit', ng-show='profileForm.$valid', ng-click='update()') Update
   .col-xs-6
     h4 Weight Graph  &  Bar Graph
-    .panel.panel-default
+    .panel
       .panel-heading
         .panel-title Weight Graph
           .panel-body Graph
+          pre {{client}}
   .col-xs-3
     h4 Goals
     form(role='form', novalidate, name='goalForm')
