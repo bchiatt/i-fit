@@ -6,6 +6,8 @@
     $scope.foodType = ['Fruit', 'Vegetable', 'Carbohydrate', 'Protein', 'Dairy', 'Other'];
     $scope.excerTypes = ['weights', 'sports', 'yoga', 'running', 'swimming', 'biking'];
     $scope.intensities = ['low', 'medium', 'high'];
+    $scope.sortFood = '';
+    $scope.sortExer = '';
     $scope.foods = [];
     $scope.food = {};
     $scope.exercises = [];
@@ -28,14 +30,14 @@
     };
 
     $scope.addEx = function(){
-      $scope.exercises.push($scope.exercise);
-      $scope.exercise = {};
+      Exercise.create($scope.exercise).then(function(response){
+        $scope.exercises.push(response.data.exercise);
+        $scope.exercise = {};
+      });
     };
 
     Food.all().then(function(response){
-      console.log('>>>>>>>>>>>>>>>>dashboard.js/Food.all()');
       $scope.foods = response.data.foods;
-      console.log('>>>>>>>>dashboard.js/Food.all(); response:', response);
     });
 
     $scope.addFood = function(){

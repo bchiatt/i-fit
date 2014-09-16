@@ -1,5 +1,7 @@
 .row
-  .col-xs-2
+  h2 i-Fit Dashboard
+.row
+  .col-xs-3
     .formBackground
       button.btn.btn-success(ng-click='toggleFood()') Add Food
       form(role='form', novalidate, ng-show='hideFood', name='foodForm')
@@ -16,43 +18,8 @@
         .form-group
           label(for='date') Date
           input.form-control#date(required, ng-model='food.date', type='date', name='date')
-        button.btn.btn-primary(type='submit', ng-show='foodForm.$valid', ng-click='addFood()') Add Food
-
-  .col-xs-8
-    .formBackground
-      h4 Food
-      table.table.table-bordered.table-striped
-        thead
-          tr
-            th Name
-            th Type
-            th Calories
-            th Date
-        tbody
-          tr(ng-repeat='f in foods')
-            th {{f.name}}
-            th {{f.type}}
-            th {{f.cals}}
-            th {{f.when | date:'MM/dd/yyyy'}}
-      h4 Exercises
-      table.table.table-bordered.table-striped
-        thead
-          tr
-            th Description
-            th Intensity
-            th Distance
-            th Type
-            th Time
-            th Notes
-        tbody
-          tr(ng-repeat='e in exercises')
-            th {{e.desc}}
-            th {{e.intensity}}
-            th {{e.distance}}
-            th {{e.type}}
-            th {{e.time}}
-            th {{e.notes}}
-  .col-xs-2
+        button.btn.btn-primary(type='submit', ng-show='foodForm.$valid', ng-click='addFood(); toggleFood()') Add Food
+    br
     .formBackground
       button.btn.btn-success(ng-click='toggleEx()') Add Exercise
       form(role='form', novalidate, ng-show='hideEx', name='ExForm')
@@ -60,20 +27,80 @@
           label(for='description') Description
           input.form-control#description(required, ng-model='exercise.description', type='text', name='description', autofocus)
         .form-group
+          label(for='date') Date
+          input.form-control#date(required, ng-model='exercise.date', type='date', name='date')
+        .form-group
           label(for='intensity') Intensity
           select.form-control(name='intensity', ng-model='exercise.intensity', required, type='dropdown')
             option(ng-repeat='i in intensities') {{i}}
         .form-group
-          label(for='distance') Distance
-          input.form-control#distance(required, ng-model='exercise.distance', type='text', name='distance')
+          label(for='distance') Distance in mi.
+          input.form-control#distance(ng-model='exercise.distance', placeholder='if applicable', type='text', name='distance')
         .form-group
           label(for='type') Type
           select.form-control#type(required, ng-model='exercise.type', type='dropdown', name='type')
             option(ng-repeat='e in excerTypes') {{e}}
         .form-group
-          label(for='time') Time
+          label(for='time') Time in Mins
           input.form-control#time(required, ng-model='exercise.time', type='text', name='time')
         .form-group
           label(for='notes') Notes
           input.form-control#notes(required, ng-model='exercise.notes', type='text', name='notes')
-        button.btn.btn-primary(type='submit', ng-show='ExForm.$valid', ng-click='addEx()') Add Exercise
+        button.btn.btn-primary(type='submit', ng-show='ExForm.$valid', ng-click='addEx(); toggleEx()') Add Exercise
+
+  .col-xs-9
+    .formBackground
+      h4 Food
+      table.table.table-bordered.table-striped
+        thead
+          tr
+            th Date &nbsp
+              a(href='', ng-click='sortFood = "when"'): span.i.fa.fa-angle-down &nbsp
+              a(href='', ng-click='sortFood = "-when"'): span.i.fa.fa-angle-up
+            th Name &nbsp
+              a(href='', ng-click='sortFood = "name"'): span.i.fa.fa-angle-down &nbsp
+              a(href='', ng-click='sortFood = "-name"'): span.i.fa.fa-angle-up
+            th Type &nbsp
+              a(href='', ng-click='sortFood = "type"'): span.i.fa.fa-angle-down &nbsp
+              a(href='', ng-click='sortFood = "-type"'): span.i.fa.fa-angle-up
+            th Calories &nbsp
+              a(href='', ng-click='sortFood = "cals"'): span.i.fa.fa-angle-down &nbsp
+              a(href='', ng-click='sortFood = "-cals"'): span.i.fa.fa-angle-up
+        tbody
+          tr(ng-repeat='f in foods | orderBy:sortFood')
+            th {{f.when | date:'MMM dd, yyyy'}}
+            th {{f.name}}
+            th {{f.type}}
+            th {{f.cals}}
+      h4 Exercises
+      table.table.table-bordered.table-striped
+        thead
+          tr
+            th Date &nbsp
+              a(href='', ng-click='sortExer = "when"'): span.i.fa.fa-angle-down &nbsp
+              a(href='', ng-click='sortExer = "-when"'): span.i.fa.fa-angle-up
+            th Description &nbsp
+              a(href='', ng-click='sortExer = "desc"'): span.i.fa.fa-angle-down &nbsp
+              a(href='', ng-click='sortExer = "-desc"'): span.i.fa.fa-angle-up
+            th Intensity &nbsp
+              a(href='', ng-click='sortExer = "intensity"'): span.i.fa.fa-angle-down &nbsp
+              a(href='', ng-click='sortExer = "-intensity"'): span.i.fa.fa-angle-up
+            th Distance &nbsp
+              a(href='', ng-click='sortExer = "distance"'): span.i.fa.fa-angle-down &nbsp
+              a(href='', ng-click='sortExer = "-distance"'): span.i.fa.fa-angle-up
+            th Type &nbsp
+              a(href='', ng-click='sortExer = "type"'): span.i.fa.fa-angle-down &nbsp
+              a(href='', ng-click='sortExer = "-type"'): span.i.fa.fa-angle-up
+            th Time &nbsp
+              a(href='', ng-click='sortExer = "time"'): span.i.fa.fa-angle-down &nbsp
+              a(href='', ng-click='sortExer = "-time"'): span.i.fa.fa-angle-up
+            th Notes
+        tbody
+          tr(ng-repeat='e in exercises | orderBy:sortExer')
+            th {{e.when | date:'MMM dd, yyyy'}}
+            th {{e.desc}}
+            th {{e.intensity}}
+            th {{e.distance}} mi.
+            th {{e.type}}
+            th {{e.time}}
+            th {{e.notes}}
