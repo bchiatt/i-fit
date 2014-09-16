@@ -48,6 +48,6 @@
         label(for='bmi') BMI
         input.form-control#bmi(required, ng-model='goal.bmi', type='number', name='bmi')
       .form-group
-        label(for='weight') 
+        label(for='weight')
         input.form-control#height(required, ng-model='user.height', type='number', name='height')
       button.btn.btn-primary(type='submit', ng-show='profileForm.$valid', ng-click='update()') Update
