@@ -1,13 +1,47 @@
+.panel{
+  position: relative;
+}
+
+#weightGoal{
+  height: 300px;
+  width: 200px;
+  position: relative;
+}
+
 #weightGoalBar{
   border: 1px solid black;
   background-color: green;
-  width: 40px;
-  position: relative;
+  width: 60px;
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+}
+
+#goalLabel{
+  height: 10px;
+  position: absolute;
+  bottom: 0;
+  right: 15px;
 }
 
 #weightActualBar{
   border: 1px solid black;
   background-color: blue;
-  width: 40px;
-  position: relative;
+  width: 60px;
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+}
+
+#actualLabel{
+  height: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 25px;
+}
+
+.formBackground{
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
 }
