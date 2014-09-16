@@ -29,12 +29,19 @@
           option Female
       button.btn.btn-primary(type='submit', ng-show='profileForm.$valid', ng-click='update()') Update
   .col-xs-6
-    h4 Weight Graph  &  Bar Graph
+    h4 Weight Graph  &  BMI Graph
     .panel
       .panel-heading
         .panel-title Weight Graph
-          .panel-body Graph
-          pre {{client}}
+          .panel-body WtGraph
+            #WtGoal
+              #weightGoalBar(ng-style='{height:client.weights[client.weights.length - 1].wt + "px"}')
+              #weightActualBar
+
+
+
+
+
   .col-xs-3
     h4 Goals
     form(role='form', novalidate, name='goalForm')
