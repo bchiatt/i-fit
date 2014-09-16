@@ -30,12 +30,19 @@
           option Female
       button.btn.btn-primary(type='submit', ng-click='update(); toggleUserForm()') Update
   .col-xs-6
-    h4 Weight Graph  &  Bar Graph
+    h4 Weight Graph  &  BMI Graph
     .panel
       .panel-heading
         .panel-title Weight Graph
-          .panel-body Graph
-          pre {{client}}
+          .panel-body WtGraph
+            #WtGoal
+              #weightActualBar(ng-style='{height:client.goals.wt + "px"}')
+              #weightGoalBar(ng-style='{height:client.weights[client.weights.length - 1].wt + "px", position:absolute, bottom:0, left:20px}')
+
+
+
+
+
   .col-xs-3
     h2 Goals
     h4 Exercise Mins/Day: {{client.goals.exerMinsPerDay}}
@@ -45,10 +52,10 @@
     button.btn.btn-primary(ng-click='toggleGoalForm()') Edit Info
     form(role='form', novalidate, name='goalForm', ng-show='hideGoalForm')
       .form-group
-        label(for='minutes') Exercise Mins/Day
+        label(for='minutes') Exercise (mins/day)
         input.form-control#minutes(required, ng-model='goals.exerMinsPerDay', type='text', name='minutes', autofocus)
       .form-group
-        label(for='calories') Calories Consumed/Day
+        label(for='calories') Calories (consumed/day)
         input.form-control#calories(required, ng-model='goals.calsPerDay', type='number', name='calories')
       .form-group
         label(for='goalWeight') Weight
