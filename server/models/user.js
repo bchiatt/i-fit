@@ -41,6 +41,8 @@ User.prototype.update = function(o, cb){
   var properties    = Object.keys(o),
       self          = this;
 
+  self.weights = self.weights || [];
+
   properties.forEach(function(property){
     switch(property){
       case 'height':
