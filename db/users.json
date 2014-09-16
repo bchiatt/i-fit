@@ -1,0 +1,11 @@
+{
+  "_id"      :{"$oid":"000000000000000000000001"},
+  "email"    :"bob@aol.com",
+  "password" :"$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2",
+  "name"     :"Bob Jones",
+  "age"      :25,
+  "height"   :72,
+  "weights"  :[{"when":{"$date":1410893586679}, "wt": 200}],
+  "gender"   :"male",
+  "goals"    :{"exerMinsPerDay": 30, "calsPerDay":-50, "weight": 180, "bmi": 27}
+}
