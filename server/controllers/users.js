@@ -1,6 +1,8 @@
 'use strict';
 
-var User = require('../models/user');
+var User     = require('../models/user'),
+    Food     = require('../models/food'),
+    Exercise = require('../models/exercise');
 
 exports.register = function(req, res){
   User.register(req.body, function(err, user){
@@ -35,3 +37,44 @@ exports.logout = function(req, res){
   });
 };
 
+exports.show = function(req, res){
+  User.findById(req.user._id, function(err, client){
+    res.send({client:client});
+  });
+};
+
+exports.update = function(req, res){
+  User.findById(req.user._id, function(err, client){
+    client.update(req.body, function(err, client){
+      res.send({client:client});
+    });
+  });
+};
+
+exports.goals = function(req, res){
+  User.updateGoals(req.body, function(err, goal){
+    res.send({goal:goal});
+  });
+};
+
+exports.dashboard = function(req, res){
+  Food.all(req.user._id, function(err, foods){
+    Exercise.all(req.user._id, function(err, exercises){
+      User.findById(req.user._id, function(err, client){
+        res.send({client:client, foods:foods, exercises:exercises});
+      });
+    });
+  });
+};
+
+exports.eat = function(req, res){
+  Food.create(req.body, req.user._id, function(err, food){
+    res.send({food:food});
+  });
+};
+
+exports.exercise = function(req, res){
+  Exercise.create(req.body, req.user._id, function(err, exercise){
+    res.send({exercise:exercise});
+  });
+};
