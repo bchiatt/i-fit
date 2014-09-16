@@ -52,8 +52,9 @@ exports.update = function(req, res){
 };
 
 exports.goals = function(req, res){
-  User.updateGoals(req.body, function(err, goal){
-    res.send({goal:goal});
+  req.user.updateGoals(req.body, function(err, client, c){
+    console.log(err, client, c);
+    res.send({goals:client.goals});
   });
 };
 

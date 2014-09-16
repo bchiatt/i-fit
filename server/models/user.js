@@ -44,26 +44,41 @@ User.prototype.update = function(o, cb){
   properties.forEach(function(property){
     switch(property){
       case 'height':
-        if(height){self[property] = o[property] * 1};
+        if(o.height){self[property] = o[property] * 1;}
         break;
       case 'weight':
         self.weights.push({when:new Date(), wt:o[property] * 1});
         break;
       case 'age':
-        if(age){self[property] = o[property] * 1};
-        break;
-      case 'goals':
-        if(goals){self[property] = o[property]};
+        if(o.age){self[property] = o[property] * 1;}
         break;
       default:
-        if(o[property]){self[property] = o[property]};
+        if(o[property]){self[property] = o[property];}
     }
   });
 
-  User.collection.save(this, cb);
+  User.collection.save(this, function(){
+    cb(null, self);
+  });
 };
 
 User.prototype.updateGoals = function(o, cb){
+  var properties = Object.keys(o),
+      self       = this;
+
+  self.goals = self.goals ||  {};
+
+  properties.forEach(function(property){
+    switch(property){
+      default:
+        if(o[property]){self.goals[property] = o[property];}
+        break;
+    }
+  });
+
+  User.collection.save(this, function(){
+    cb(null, self);
+  });
 };
 
 module.exports = User;
