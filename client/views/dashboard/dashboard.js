@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('i-fit')
-  .controller('ProfileCtrl', ['$scope', function($scope){
+  .controller('DashboardCtrl', ['$scope', function($scope){
   }]);
 })();
 
