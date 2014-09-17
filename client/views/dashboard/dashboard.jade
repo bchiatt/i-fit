@@ -32,8 +32,8 @@
           tr(ng-repeat='f in foods')
             th {{f.name}}
             th {{f.type}}
-            th {{f.calories}}
-            th {{f.date | date:'MM/dd/yyyy'}}
+            th {{f.cals}}
+            th {{f.when | date:'MM/dd/yyyy'}}
       h4 Exercises
       table.table.table-bordered.table-striped
         thead
@@ -46,7 +46,7 @@
             th Notes
         tbody
           tr(ng-repeat='e in exercises')
-            th {{e.description}}
+            th {{e.desc}}
             th {{e.intensity}}
             th {{e.distance}}
             th {{e.type}}
