@@ -11,15 +11,26 @@
           option(ng-repeat='t in foodType') {{t}}
       .form-group
         label(for='calories') Calories
-        input.form-control#calories(required, ng-model='food.calories', type='number', name='calories')
+        input.form-control#calories(required, ng-model='food.cals', type='number', name='calories')
       .form-group
         label(for='date') Date
         input.form-control#date(required, ng-model='food.date', type='date', name='date')
       button.btn.btn-primary(type='submit', ng-show='foodForm.$valid', ng-click='addFood()') Add Food
   .col-xs-8
     h3 Dashboard
-      ul Food
-        li(ng-repeat='f in foods') {{f}}
+      h4 Food
+        table.table.table-hover.table-bordered
+          thead
+            tr
+              th Date
+              th Name
+              th Calories
+          tbody
+            tr(ng-repeat='f in foods')
+              td {{f.when}}
+              td {{f.name}}
+              td {{f.cals}}
+
       ul Exercises
         li(ng-repeat='e in exercises') {{e}}
   .col-xs-2
