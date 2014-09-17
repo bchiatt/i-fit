@@ -72,6 +72,7 @@
             th {{f.name}}
             th {{f.type}}
             th {{f.cals}}
+      br
       h4 Exercises
       table.table.table-bordered.table-striped
         thead
@@ -94,6 +95,7 @@
             th Time &nbsp
               a(href='', ng-click='sortExer = "time"'): span.i.fa.fa-angle-down &nbsp
               a(href='', ng-click='sortExer = "-time"'): span.i.fa.fa-angle-up
+            th Calories Burned
             th Notes
         tbody
           tr(ng-repeat='e in exercises | orderBy:sortExer')
@@ -103,4 +105,5 @@
             th {{e.distance}} mi.
             th {{e.type}}
             th {{e.time}}
+            th {{e.calsBurned}}
             th {{e.notes}}
