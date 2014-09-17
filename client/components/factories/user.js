@@ -20,10 +20,15 @@
       return $http.post('/profile', user);
     }
 
+    function updateGoals(goals){
+      return $http.post('/profile/goals', goals);
+    }
+
     function show(){
       return $http.get('/profile');
     }
-    return {register:register, login:login, logout:logout, update:update, show:show};
+
+    return {register:register, login:login, logout:logout, update:update, updateGoals:updateGoals, show:show};
   }]);
 })();
 

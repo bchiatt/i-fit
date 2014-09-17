@@ -38,32 +38,47 @@ User.login = function(o, cb){
 };
 
 User.prototype.update = function(o, cb){
-  var properties = Object.keys(o),
-      self       = this;
+  var properties    = Object.keys(o),
+      self          = this;
 
   properties.forEach(function(property){
     switch(property){
       case 'height':
-        self[property] = o[property] * 1;
+        if(o.height){self[property] = o[property] * 1;}
         break;
       case 'weight':
-        self[property] = o[property] * 1;
+        self.weights.push({when:new Date(), wt:o[property] * 1});
         break;
       case 'age':
-        self[property] = o[property] * 1;
-        break;
-      case 'goals':
-        self[property] = o[property];
+        if(o.age){self[property] = o[property] * 1;}
         break;
       default:
-        self[property] = o[property];
+        if(o[property]){self[property] = o[property];}
     }
   });
 
-  User.collection.save(this, cb);
+  User.collection.save(this, function(){
+    cb(null, self);
+  });
 };
 
 User.prototype.updateGoals = function(o, cb){
+  var properties = Object.keys(o),
+      self       = this;
+
+  self.goals = self.goals ||  {};
+
+  properties.forEach(function(property){
+    switch(property){
+      default:
+        if(o[property]){self.goals[property] = o[property];}
+        break;
+    }
+  });
+
+  User.collection.save(this, function(){
+    cb(null, self);
+  });
 };
 
 module.exports = User;
