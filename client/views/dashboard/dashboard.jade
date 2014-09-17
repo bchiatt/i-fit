@@ -18,19 +18,31 @@
       button.btn.btn-primary(type='submit', ng-show='foodForm.$valid', ng-click='addFood()') Add Food
   .col-xs-8
     h3 Dashboard
+      ul Food
+        li(ng-repeat='f in foods') {{f}}
+      ul Exercises
+        li(ng-repeat='e in exercises') {{e}}
   .col-xs-2
-    button.btn.btn-success(ng-click='toggleFood()') Add Food
-    form(role='form', novalidate, ng-show='hideFood', name='foodForm')
+    button.btn.btn-success(ng-click='toggleEx()') Add Exercise
+    form(role='form', novalidate, ng-show='hideEx', name='ExForm')
       .form-group
-        label(for='name') Name
-        input.form-control#name(ng-minlength='1', required, ng-model='food.name', type='text', name='name', autofocus)
+        label(for='description') Description
+        input.form-control#description(required, ng-model='exercise.description', type='text', name='description', autofocus)
+      .form-group
+        label(for='intensity') Intensity
+        select.form-control(name='intensity', ng-model='exercise.intensity', required, type='dropdown')
+          option(ng-repeat='i in intensities') {{i}}
+      .form-group
+        label(for='distance') Distance
+        input.form-control#distance(required, ng-model='exercise.distance', type='text', name='distance')
       .form-group
         label(for='type') Type
-        select.form-control#type(required, ng-model='food.type', type='dropdown', name='type')
-          option(ng-repeat='t in foodType') {{t}}
+        select.form-control#type(required, ng-model='exercise.type', type='dropdown', name='type')
+          option(ng-repeat='e in excerTypes') {{e}}
       .form-group
-        label(for='calories') Calories
-        input.form-control#calories(required, ng-model='food.calories', type='number', name='calories')
+        label(for='time') Time
+        input.form-control#time(required, ng-model='exercise.time', type='text', name='time')
       .form-group
-        label(for='date') Date
-        input.form-control#date(required, ng-model='food.date', type='date', name='date')
+        label(for='notes') Notes
+        input.form-control#notes(required, ng-model='exercise.notes', type='text', name='notes')
+      button.btn.btn-primary(type='submit', ng-show='ExForm.$valid', ng-click='addEx()') Add Exercise
