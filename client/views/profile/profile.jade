@@ -35,8 +35,8 @@
         .panel-title Weight Graph
           .panel-body WtGraph
             #WtGoal
-              #weightGoalBar(ng-style='{height:client.weights[client.weights.length - 1].wt + "px"}')
-              #weightActualBar
+              #weightActualBar(ng-style='{height:client.goals.wt + "px"}')
+              #weightGoalBar(ng-style='{height:client.weights[client.weights.length - 1].wt + "px", position:absolute, bottom:0, left:20px}')
 
 
 
@@ -46,15 +46,15 @@
     h4 Goals
     form(role='form', novalidate, name='goalForm')
       .form-group
-        label(for='name') Name
-        input.form-control#name(required, ng-model='goal.name', type='text', name='name', autofocus)
-      .form-group
         label(for='weight') Weight
-        input.form-control#weight(required, ng-model='goal.weight', type='number', name='weight')
+        input.form-control#weight(required, ng-model='goals.weight', type='number', name='weight')
       .form-group
         label(for='bmi') BMI
-        input.form-control#bmi(required, ng-model='goal.bmi', type='number', name='bmi')
+        input.form-control#bmi(required, ng-model='goals.bmi', type='number', name='bmi')
       .form-group
-        label(for='weight') 
-        input.form-control#height(required, ng-model='user.height', type='number', name='height')
+        label(for='calories') Calories (per day)
+        input.form-control#calories(required, ng-model='goals.calsPerDay', type='number', name='calories')
+      .form-group
+        label(for='minutes') Exercise (minutes/day)
+        input.form-control#minutes(required, ng-model='goals.exerMinsPerDay', type='number', name='minutes', autofocus)
       button.btn.btn-primary(type='submit', ng-show='profileForm.$valid', ng-click='update()') Update
