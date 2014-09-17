@@ -16,12 +16,40 @@
         label(for='date') Date
         input.form-control#date(required, ng-model='food.date', type='date', name='date')
       button.btn.btn-primary(type='submit', ng-show='foodForm.$valid', ng-click='addFood()') Add Food
+
   .col-xs-8
-    h3 Dashboard
-      ul Food
-        li(ng-repeat='f in foods') {{f}}
-      ul Exercises
-        li(ng-repeat='e in exercises') {{e}}
+    h4 Food
+    table.table.table-bordered.table-striped
+      thead
+        tr
+          th Name
+          th Type
+          th Calories
+          th Date
+      tbody
+        tr(ng-repeat='f in foods')
+          th {{f.name}}
+          th {{f.type}}
+          th {{f.calories}}
+          th {{f.date | date:'MM/dd/yyyy'}}
+    h4 Exercises
+    table.table.table-bordered.table-striped
+      thead
+        tr
+          th Description
+          th Intensity
+          th Distance
+          th Type
+          th Time
+          th Notes
+      tbody
+        tr(ng-repeat='e in exercises')
+          th {{e.description}}
+          th {{e.intensity}}
+          th {{e.distance}}
+          th {{e.type}}
+          th {{e.time}}
+          th {{e.notes}}
   .col-xs-2
     button.btn.btn-success(ng-click='toggleEx()') Add Exercise
     form(role='form', novalidate, ng-show='hideEx', name='ExForm')
