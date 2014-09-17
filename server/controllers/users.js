@@ -58,12 +58,6 @@ exports.goals = function(req, res){
   });
 };
 
-exports.foods = function(req, res){
-  Food.all(req.user._id, function(err, foods){
-    res.send({foods:foods});
-  });
-};
-
 exports.exercises = function(req, res){
   Exercise.all(req.user._id, function(err, exercises){
     res.send({exercises:exercises});
@@ -77,9 +71,7 @@ exports.eat = function(req, res){
 };
 
 exports.foodLog = function(req, res){
-  console.log('>>>>>>>>>>>>>>>>exports.foodLog');
   Food.all(req.user._id, function(err, foods){
-    console.log('>>>>>>>>>>>>>>>>exports.foodLog - foods:', foods);
     res.send({foods:foods});
   });
 };

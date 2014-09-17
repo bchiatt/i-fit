@@ -3,14 +3,11 @@
 var Mongo = require('mongodb');
 
 function Food(o, user){
-  console.log('>>>>>>>>>>>>Food constructor; o: ', o);
-  console.log('>>>>>>>>>>>>Food constructor; user: ', user);
-  this._id    = new Mongo.ObjectID();
   this.name   = o.name;
   this.type   = o.type;
-  this.cals   = parseInt(o.cals);
-  this.when   = new Date(o.when);
-  this.userId = user;
+  this.cals   = parseInt(o.calories);
+  this.when   = new Date(o.date);
+  this.userId = Mongo.ObjectID(user._id);
 }
 
 Object.defineProperty(Food, 'collection', {
