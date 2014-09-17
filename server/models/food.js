@@ -3,12 +3,11 @@
 var Mongo = require('mongodb');
 
 function Food(o, user){
-  this._id    = new Mongo.userID();
   this.name   = o.name;
   this.type   = o.type;
-  this.cals   = o.cals;
-  this.when   = new Date(o.when);
-  this.userId = user._id;
+  this.cals   = parseInt(o.calories);
+  this.when   = new Date(o.date);
+  this.userId = Mongo.ObjectID(user._id);
 }
 
 Object.defineProperty(Food, 'collection', {
@@ -20,8 +19,8 @@ Food.create = function(o, user, cb){
   Food.collection.save(f, cb);
 };
 
-Food.all = function(user, cb){
-  Food.collection.find({userId:user._id}).toArray(cb);
+Food.all = function(userId, cb){
+  Food.collection.find({userId:userId}).toArray(cb);
 };
 
 module.exports = Food;

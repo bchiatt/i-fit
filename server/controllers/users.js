@@ -58,19 +58,21 @@ exports.goals = function(req, res){
   });
 };
 
-exports.dashboard = function(req, res){
-  Food.all(req.user._id, function(err, foods){
-    Exercise.all(req.user._id, function(err, exercises){
-      User.findById(req.user._id, function(err, client){
-        res.send({client:client, foods:foods, exercises:exercises});
-      });
-    });
+exports.exercises = function(req, res){
+  Exercise.all(req.user._id, function(err, exercises){
+    res.send({exercises:exercises});
   });
 };
 
 exports.eat = function(req, res){
   Food.create(req.body, req.user, function(err, food){
     res.send({food:food});
+  });
+};
+
+exports.foodLog = function(req, res){
+  Food.all(req.user._id, function(err, foods){
+    res.send({foods:foods});
   });
 };
 

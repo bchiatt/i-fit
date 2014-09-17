@@ -1,4 +1,6 @@
 .row
+  h2 i-Fit Profile
+.row
   .col-xs-4
     .formBackground
       h2 Info
@@ -32,14 +34,19 @@
         button.btn.btn-primary(type='submit', ng-click='update(); toggleUserForm()') Update
   .col-xs-4
     .panel
-      .panel-heading
-        .panel-title Goals
-          .panel-body Weight Goal
-            #weightGoal
-              #weightActualBar(ng-style='{height:client.goals.weight + "px"}')
-              #goalLabel ACTUAL
-              #weightGoalBar(ng-style='{height:weight + "px"}')
-              #actualLabel GOAL
+      h3 Weight Goal
+      #weightGoal
+        #weightGoalBar(ng-style='{height:weight + "px"}')
+        .actualLabel GOAL
+        #weightActualBar(ng-style='{height:client.goals.weight + "px"}')
+        .goalLabel ACTUAL
+      br
+      h3 BMI Goal
+      #bmiGoal
+        #bmiGoalBar(ng-style='{height:bmi * 8 + "px"}')
+        .actualLabel GOAL
+        #bmiActualBar(ng-style='{height:client.goals.bmi * 8 + "px"}')
+        .goalLabel ACTUAL
 
 
 

@@ -3,14 +3,14 @@
 var Mongo = require('mongodb');
 
 function Exercise(o, user){
-  this._id        = new Mongo.userID();
-  this.desc       = o.desc;
-  this.when       = new Date(o.when);
+  this.desc       = o.description;
+  this.when       = new Date(o.date);
   this.time       = o.time;
+  this.type       = o.type;
   this.intensity  = o.intensity;
   this.distance   = o.distance;
   this.notes      = o.notes;
-  this.userId     = user._id;
+  this.userId     = Mongo.ObjectID(user._id);
   this.calsBurned = o.calsBurned;
 }
 
@@ -19,13 +19,16 @@ Object.defineProperty(Exercise, 'collection', {
 });
 
 Exercise.create = function(o, user, cb){
+  console.log('first >>>>>>>', o);
   getCalsBurned(o, user);
+  console.log('second >>>>>>>', o);
   var e = new Exercise(o, user);
+  console.log('third >>>>>>>', e);
   Exercise.collection.save(e, cb);
 };
 
-Exercise.all = function(user, cb){
-  Exercise.collection.find({userId:user._id}).toArray(cb);
+Exercise.all = function(userId, cb){
+  Exercise.collection.find({userId:userId}).toArray(cb);
 };
 
 module.exports = Exercise;
