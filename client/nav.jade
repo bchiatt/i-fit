@@ -14,8 +14,8 @@
         li: a(href='/#/register') Register
         li: a(href='/#/login') Login
       ul.nav.navbar-nav.navbar-right(ng-show='email')
-        li: a(href='/#/') Home
-        li: a(href='/#/logout') {{email}}
-        li: a(href='/#/profile') Profile
-        li: a(href='/#/dashboard') Dashboard
+        li: a(href='/#/', class='fa fa-home') Home
+        li: a(href='/#/logout', class='fa fa-times') {{email}}
+        li: a(href='/#/profile', class='glyphicon glyphicon-user') Profile
+        li: a(href='/#/dashboard', class='fa fa-bar-chart') Dashboard
 
