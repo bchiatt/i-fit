@@ -38,6 +38,7 @@
         tr
           th Description
           th Intensity
+          th Date
           th Distance
           th Type
           th Time
@@ -46,6 +47,7 @@
         tr(ng-repeat='e in exercises')
           th {{e.description}}
           th {{e.intensity}}
+          th {{e.when}}
           th {{e.distance}}
           th {{e.type}}
           th {{e.time}}
@@ -56,6 +58,9 @@
       .form-group
         label(for='description') Description
         input.form-control#description(required, ng-model='exercise.description', type='text', name='description', autofocus)
+      .form-group
+        label(for='when') When?
+        input.form-control#date(required, ng-model='exercise.when', type='date', name='when')
       .form-group
         label(for='intensity') Intensity
         select.form-control(name='intensity', ng-model='exercise.intensity', required, type='dropdown')
