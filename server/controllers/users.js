@@ -76,6 +76,14 @@ exports.eat = function(req, res){
   });
 };
 
+exports.foodLog = function(req, res){
+  console.log('>>>>>>>>>>>>>>>>exports.foodLog');
+  Food.all(req.user._id, function(err, foods){
+    console.log('>>>>>>>>>>>>>>>>exports.foodLog - foods:', foods);
+    res.send({foods:foods});
+  });
+};
+
 exports.exercise = function(req, res){
   Exercise.create(req.body, req.user, function(err, exercise){
     res.send({exercise:exercise});

@@ -32,10 +32,19 @@
       $scope.exercise = {};
     };
 
+    Food.all().then(function(response){
+      console.log('>>>>>>>>>>>>>>>>dashboard.js/Food.all()');
+      $scope.foods = response.data.foods;
+      console.log('>>>>>>>>dashboard.js/Food.all(); response:', response);
+    });
+
     $scope.addFood = function(){
-      $scope.foods.push($scope.food);
-      $scope.food = {};
+      Food.create($scope.food).then(function(response){
+        $scope.foods.push(response.data.food);
+        $scope.food = {};
+      });
     };
+
   }]);
 })();
 
