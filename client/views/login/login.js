@@ -7,7 +7,7 @@
 
     function success(response){
       toastr.success('Successful login.');
-      $location.path('/');
+      $location.path('/#/dashboard');
     }
 
     function failure(response){
